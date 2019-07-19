@@ -7,12 +7,14 @@ import './App.css';
 const App = () => {
   const [data, setData] = useState([]);
   const [activePage, setActivePage] = useState(1);
-  const [apiUrl, setApiUrl] = useState('https://swapi.co/api/people/')
+  const [apiUrl, setApiUrl] = useState('https://swapi.co/api/people/');
 
 
   useEffect(() => {
     axios.get(apiUrl).then(response => {
       setData(response.data.results);
+    }).catch((err) => {
+      throw(err);
     });
   },[apiUrl]);
 
