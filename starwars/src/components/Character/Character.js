@@ -1,0 +1,36 @@
+import React from 'react';
+import { Dimmer, Loader, Divider, Grid, Segment } from 'semantic-ui-react';
+
+function Character(props) {
+
+  if(!props.data) {
+    return <Dimmer className="dimmer" size="massive" content="Loading" active>
+      <Loader />
+    </Dimmer>
+  }
+
+  return (
+    <div className="card-container">
+      <Segment>
+        <div className="card-title">
+          <h1>{props.data.name}</h1>
+        </div>
+        <Divider />
+        <div className="info-container">
+          <Grid columns={2}>
+            <Grid.Column>
+              <div>Height: {props.data.height}</div>
+              <div>Eye Color: {props.data.eye_color}</div>
+            </Grid.Column>
+            <Grid.Column>
+              <div>Mass Weight: {props.data.mass}</div>
+              <div>Hair Color: {props.data.hair_color}</div>
+            </Grid.Column>
+          </Grid>
+        </div>
+      </Segment>
+    </div>
+  )
+};
+
+export default Character;
