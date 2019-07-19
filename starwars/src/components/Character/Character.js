@@ -17,7 +17,7 @@ function Character(props) {
         </div>
         <Divider />
         <div className="info-container">
-          <Grid columns={2} relaxed="very">
+          <Grid columns={2}>
             <Grid.Column>
               <div>Height: {props.data.height}</div>
               <div>Eye Color: {props.data.eye_color}</div>
