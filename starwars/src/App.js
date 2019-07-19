@@ -6,7 +6,6 @@ import './App.css';
 const App = () => {
   const [data, setData] = useState({});
 
-
   useEffect(() => {
     axios.get('https://swapi.co/api/people/').then(response => {
       setData(response.data);
@@ -23,11 +22,11 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <div className="characters-container">
+        <Character data={data} />
+      </div>
     </div>
 
-    <div>
-
-    </div>
   );
 }
 
