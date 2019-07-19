@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, Dimmer, Loader, Divider, Grid, Segment } from 'semantic-ui-react';
+import { Dimmer, Loader, Divider, Grid, Segment } from 'semantic-ui-react';
 
 function Character(props) {
 
   if(!props.data) {
-    return <Dimmer size="massive" active>
+    return <Dimmer className="dimmer" size="massive" active>
       <Loader />
     </Dimmer>
   }
