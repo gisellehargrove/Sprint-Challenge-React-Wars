@@ -13,7 +13,6 @@ const App = () => {
   useEffect(() => {
     axios.get(apiUrl).then(response => {
       setData(response.data.results);
-      console.log(response.data);
     });
   },[apiUrl]);
 
