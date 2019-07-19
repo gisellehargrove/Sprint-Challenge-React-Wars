@@ -4,12 +4,13 @@ import Character from './components/Character/Character.js';
 import './App.css';
 
 const App = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
+
 
   useEffect(() => {
     axios.get('https://swapi.co/api/people/').then(response => {
-      setData(response.data);
-      console.log(response.data);
+      setData(response.data.results);
+      console.log(response.data.results);
     });
   },[]);
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -22,8 +23,12 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+
       <div className="characters-container">
-        <Character data={data} />
+        {data.map((character, index) =>
+          <Character key={index} data={character} />
+        )}
+
       </div>
     </div>
 
