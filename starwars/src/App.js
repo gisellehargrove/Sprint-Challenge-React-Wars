@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Character from './components/Character/Character.js';
+import { Pagination } from 'semantic-ui-react';
+import axios from 'axios';
 import './App.css';
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [apiUrl, setApiUrl] = useState('https://swapi.co/api/people/')
 
 
   useEffect(() => {
-    axios.get('https://swapi.co/api/people/').then(response => {
+    axios.get(apiUrl).then(response => {
       setData(response.data.results);
-      console.log(response.data.results);
+      console.log(response.data);
     });
-  },[]);
+  },[apiUrl]);
+
+  const paginate = (e, page) => {
+    setActivePage(page.activePage);
+    setApiUrl('https://swapi.co/api/people/?page=' + page.activePage.toString());
+  };
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -24,11 +32,16 @@ const App = () => {
     <div className="App">
       <h1 className="Header">React Wars</h1>
 
+      <Pagination
+        activePage={activePage}
+        onPageChange={paginate}
+        siblingRange={1}
+        totalPages={9}
+        ellipsisItem={null}/>
       <div className="characters-container">
         {data.map((character, index) =>
           <Character key={index} data={character} />
         )}
-
       </div>
     </div>
 

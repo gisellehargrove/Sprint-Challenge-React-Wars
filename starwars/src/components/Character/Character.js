@@ -3,8 +3,6 @@ import { Card, Dimmer, Loader, Divider, Grid, Segment } from 'semantic-ui-react'
 
 function Character(props) {
 
-  console.log(props.data, 'props.data');
-
   if(!props.data) {
     return <Dimmer size="massive" active>
       <Loader />
